@@ -14,51 +14,64 @@
 # limitations under the License.
 
 #!/bin/bash
-# Fecha: 16 Mayo 2020
+# Fecha: 30 Mayo 2020
 # Version: 0.1.0
 # Escrito por: Raúl González <rafex@rafex.dev>
 
-function reinstall_default_pro_evolution_soccer_2016 () {
-  local NAME_OF_THE_MODULE="Pro Evolution Soccer 2016"
+# function download_battleNet () {
+#   local url_battleNet ="https://us.battle.net/download/getInstaller?os=win&installer=Battle.net-Setup.exe"
+#   {
+#     command_exists "curl"
+#     curl $url_battleNet
+#   }
+#   ||
+#   {
+#     command_exists "wget"
+#   }
+#
+# }
+
+function reinstall_default_battleNet () {
+  local NAME_OF_THE_MODULE="Blizzard BattleNet"
   valid_pre_install $NAME_OF_THE_MODULE
 
-  local GAME="ProEvolutionSoccer2016"
-  local DEPENDENCIES=juegos/deportes/${GAME}/winetricks.dependencies
-  re-create_prefix_jugando_en_linux $GAME $DEPENDENCIES
-  create_launcher ${GAME}
+  local GAME="BattleNet"
+  local DEPENDENCIES=juegos/lanzadores/${GAME}/winetricks.dependencies
+  re-create_prefix_jugando_en_linux
+
 }
 
-function install_default_pro_evolution_soccer_2016 () {
-  local NAME_OF_THE_MODULE="Pro Evolution Soccer 2016"
+function install_default_battleNet () {
+  local NAME_OF_THE_MODULE="Blizzard BattleNet"
   valid_pre_install $NAME_OF_THE_MODULE
 
-  local GAME="ProEvolutionSoccer2016"
-  local DEPENDENCIES=juegos/deportes/${GAME}/winetricks.dependencies
-  create_prefix_jugando_en_linux $GAME $DEPENDENCIES
-  create_launcher ${GAME}
+  local GAME="BattleNet"
+  local DEPENDENCIES=juegos/lanzadores/${GAME}/winetricks.dependencies
+  create_prefix_jugando_en_linux
+
 }
 
-function reinstall_pro_evolution_soccer_2016 () {
-  local NAME_OF_THE_MODULE="Pro Evolution Soccer 2016"
+function reinstall_battleNet () {
+  local NAME_OF_THE_MODULE="Blizzard BattleNet"
   valid_pre_install $NAME_OF_THE_MODULE
 
-  local GAME="ProEvolutionSoccer2016"
-  local DEPENDENCIES=juegos/deportes/${GAME}/winetricks.dependencies
+  local GAME="BattleNet"
+  local DEPENDENCIES=juegos/lanzadores/${GAME}/winetricks.dependencies
   re-create_prefix_for_game $GAME $DEPENDENCIES
-  create_launcher ${GAME}
+
 }
 
-function install_pro_evolution_soccer_2016 () {
-  local NAME_OF_THE_MODULE="Pro Evolution Soccer 2016"
+function install_battleNet () {
+  local NAME_OF_THE_MODULE="Blizzard BattleNet"
   valid_pre_install $NAME_OF_THE_MODULE
 
-  local GAME="ProEvolutionSoccer2016"
-  local DEPENDENCIES=juegos/deportes/${GAME}/winetricks.dependencies
+  local GAME="BattleNet"
+  local DEPENDENCIES=juegos/lanzadores/${GAME}/winetricks.dependencies
   create_prefix_for_game $GAME $DEPENDENCIES
-  create_launcher ${GAME}
+  wine "/tmp/Battle.net-Setup.exe"
 }
 
-function pes2016_menu () {
+function battle_net_menu () {
   local NAME_OF_THE_MODULE="Pro Evolution Soccer 2016"
   local MODULE_VERSION="1.0"
   local INITIAL_TEXT="Vamos a instalar ${NAME_OF_THE_MODULE}"
@@ -91,10 +104,10 @@ function pes2016_menu () {
     yellow_text "Seleciona una opción y presiona <Enter>"
     read answer
     case "$answer" in
-      1) install_default_pro_evolution_soccer_2016 && green_text "\nFinalizo ${option_1}\n" ;;
-      2) reinstall_default_pro_evolution_soccer_2016 && green_text "\nFinalizo ${option_2}\n" ;;
-      3) install_pro_evolution_soccer_2016 && green_text "\nFinalizo ${option_3}\n" ;;
-      4) reinstall_pro_evolution_soccer_2016 && green_text "\nFinalizo ${option_4}\n" ;;
+      1) install_default_battleNet && green_text "\nFinalizo ${option_1}\n" ;;
+      2) reinstall_default_battleNet && green_text "\nFinalizo ${option_2}\n" ;;
+      3) install_battleNet && green_text "\nFinalizo ${option_3}\n" ;;
+      4) reinstall_battleNet && green_text "\nFinalizo ${option_4}\n" ;;
       s) good_bye ;;
     esac
     red_text "Presiona la tecla <Enter> para continuar"

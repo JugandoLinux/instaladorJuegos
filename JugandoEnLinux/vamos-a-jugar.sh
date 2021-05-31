@@ -20,6 +20,7 @@
 
 . utils/is-root.sh
 . utils/color.sh
+. utils/command_exists.sh
 . utils/distro.sh
 . utils/network.sh
 . utils/random.sh

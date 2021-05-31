@@ -44,7 +44,7 @@ function deportes_menu () {
     yellow_text "Seleciona una opción y presiona <Enter>"
     read answer
     case "$answer" in
-     1) nginx_compile_menu ;;
+     1) pes2016_menu ;;
      s) good_bye ;;
     esac
     red_text "Presiona la tecla <Enter> para continuar"

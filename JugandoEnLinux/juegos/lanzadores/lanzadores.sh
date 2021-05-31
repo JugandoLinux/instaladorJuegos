@@ -14,17 +14,15 @@
 # limitations under the License.
 
 #!/bin/bash
-# Fecha: 16 Mayo 2020
+# Fecha: 30 Mayo 2020
 # Version: 0.1.0
 # Escrito por: Raúl González <rafex@rafex.dev>
 
-. juegos/deportes/deportes.sh
-. juegos/lanzadores/lanzadores.sh
+. juegos/lanzadores/BattleNet/BattleNet.sh
 
-function juegos_menu () {
-  local name_of_menu="Juegos"
-  local option_1="Deportes"
-  local option_2="Lanzadores"
+function lanzadores_menu () {
+  local name_of_menu="Juegos/Lanzadores"
+  local option_1="Blizzard/Battle.net"
 
   trap '' 2  # ignore control + c
   while true
@@ -34,21 +32,19 @@ function juegos_menu () {
     clear # clear screen for each loop of menu
     green_text "================================"
     green_text "================================"
-    echo "-------------      -------------"
+    echo "-------------        -------------"
     red_text "${name_of_menu}"
-    echo "-----------          -----------"
+    echo "-----------            -----------"
     green_text "================================"
     green_text "================================"
     echo " "
     echo "Enter 1) ${option_1}"
-    echo "Enter 2) ${option_2}"
     echo " "
     red_text "Presiona la letra 's' y <Enter> para salir."
     yellow_text "Seleciona una opción y presiona <Enter>"
     read answer
     case "$answer" in
-     1) deportes_menu ;;
-     2) lanzadores_menu ;;
+     1) battle_net_menu ;;
      s) good_bye ;;
     esac
     red_text "Presiona la tecla <Enter> para continuar"
